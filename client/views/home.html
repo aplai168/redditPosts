@@ -1,0 +1,8 @@
+<form>
+    <input placeholder="Choose a reddit" ng-model="subreddit"/>
+</form>
+<div ng-repeat="post in posts">
+    <h1>{{ post.data.author }}</h1>
+    <h2>{{ post.data.title }}</h2>
+    <h3>{{ post.data.url }}</h3>
+</div>
