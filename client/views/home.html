@@ -2,8 +2,23 @@
     <input placeholder="Choose a subreddit" ng-model="subreddit"/>
     <button ng-click="submit(subreddit)">Submit</button>
 </form>
+<br />
+<form>
+    <input placeholder="Minimum" ng-model="minComment"/>
+    <input placeholder="Maximum" ng-model="maxComment"/>
+    <button ng-click="commentMinMax(minComment, maxComment)">Filter by Minimum comment Number</button>
+</form>
+<form>
+    <input placeholder="Min # Ups" ng-model="minUps"/>
+    <button ng-click="filterUps(minUps)">Filter by Minimum Ups</button>
+
+</form>
 <div ng-repeat="post in posts">
+<!-- <div ng-repeat="post in posts | filter:filterUps(minUps) | filter:commentMinMax(minComment, maxComment)"> -->
+
     <h1>{{ post.data.author }}</h1>
     <h2>{{ post.data.title }}</h2>
     <h3>{{ post.data.url }}</h3>
+    <h3>{{ post.data.ups }}</h3>
+
 </div>
