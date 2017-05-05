@@ -1,5 +1,6 @@
 <form>
-    <input placeholder="Choose a reddit" ng-model="subreddit"/>
+    <input placeholder="Choose a subreddit" ng-model="subreddit"/>
+    <button ng-click="submit(subreddit)">Submit</button>
 </form>
 <div ng-repeat="post in posts">
     <h1>{{ post.data.author }}</h1>
