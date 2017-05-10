@@ -11,6 +11,7 @@ app.controller('MainController', function ($scope, Subreddit) {
   };
   // create a filter function to show only posts that range between these given minimums and maximums
   $scope.commentMinMax = (minComment, maxComment) => {
+    console.log(minComment, 'minComment')
     return $scope.posts.filter(post => post.data.num_comments > minComments && post.data.num_comments > minComments);
   };
   $scope.filterUps = (minUps) => {
@@ -22,4 +23,13 @@ app.factory('Subreddit', function ($http) {
   return {
     getTopic: topic => $http.get(`http://www.reddit.com/search.json?q=${topic}&sort=top&limit=5/comments/article`),
   }
+});
+
+app.filter('upsFiltering', function() {
+  return function(x, condition) {
+    if (!condition || condition === '') return x;
+    return x.filter(function(item) {
+      return item.data.ups >= condition;
+    });
+  };
 });
