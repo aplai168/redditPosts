@@ -33,3 +33,21 @@ app.filter('upsFiltering', function() {
     });
   };
 });
+
+app.filter('minFiltering', function() {
+  return function(x, condition) {
+    if (!condition || condition === '') return x;
+    return x.filter(function(item) {
+      return item.data.num_comments >= condition;
+    });
+  };
+});
+
+app.filter('maxFiltering', function() {
+  return function(x, condition) {
+    if (!condition || condition === '') return x;
+    return x.filter(function(item) {
+      return item.data.num_comments <= condition;
+    });
+  };
+});

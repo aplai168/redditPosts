@@ -13,12 +13,13 @@
     <button ng-click="filterUps(minUps)">Filter by Minimum Ups</button>
 
 </form>
-<div ng-repeat="post in posts | upsFiltering: minUps">
+<div ng-repeat="post in posts | upsFiltering: minUps | minFiltering: minComment | maxFiltering: maxComment">
 <!-- <div ng-repeat="post in posts | filter:filterUps(minUps) | filter:commentMinMax(minComment, maxComment)"> -->
 
     <h1>{{ post.data.author }}</h1>
     <h2>{{ post.data.title }}</h2>
     <h3>{{ post.data.url }}</h3>
     <h3>{{ post.data.ups }}</h3>
+    <h3>{{ post.data.num_comments }}</h3>
 
 </div>
